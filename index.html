@@ -1,0 +1,278 @@
+import os
+
+# Definiamo il contenuto HTML del sito aggiornato
+html_content = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GabrieleArch - Repository</title>
+    <style>
+        :root {
+            --arch-blue: #1793d1;
+            --arch-dark: #333333;
+            --arch-light: #eeeeee;
+            --arch-grey: #e9ecef;
+            --arch-white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: var(--arch-white);
+            color: var(--arch-dark);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Top Bar */
+        header {
+            background-color: var(--arch-dark);
+            border-bottom: 5px solid var(--arch-blue);
+            padding: 15px 10%;
+            display: flex;
+            align-items: center;
+        }
+
+        header img {
+            height: 50px;
+            margin-right: 20px;
+            border-radius: 5px;
+        }
+
+        header h1 {
+            color: white;
+            margin: 0;
+            font-size: 1.8em;
+            letter-spacing: 1px;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--arch-grey);
+            padding: 10px 10%;
+            border-bottom: 1px solid #ccc;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: var(--arch-blue);
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 25px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: #065e8a;
+            text-decoration: underline;
+        }
+
+        /* Main Layout */
+        main {
+            padding: 30px 10%;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 40px;
+        }
+
+        /* Box Styles */
+        .box {
+            border: 1px solid #ccd1d5;
+            margin-bottom: 30px;
+            scroll-margin-top: 70px;
+        }
+
+        .box-title {
+            background-color: var(--arch-blue);
+            color: white;
+            padding: 10px 15px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .box-content {
+            padding: 20px;
+            background-color: #fafafa;
+        }
+
+        /* Version Badges */
+        .version-tag {
+            background: var(--arch-dark);
+            color: var(--arch-blue);
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        /* Commands */
+        code {
+            display: block;
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 12px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.95em;
+            border-left: 5px solid var(--arch-blue);
+        }
+
+        .download-btn {
+            display: inline-block;
+            background-color: var(--arch-blue);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 3px;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: 0.2s;
+        }
+
+        .download-btn:hover {
+            background-color: var(--arch-dark);
+        }
+
+        /* Sidebar Stats */
+        .stats-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .stats-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px;
+            background-color: var(--arch-grey);
+            color: #666;
+            font-size: 0.85em;
+            margin-top: 50px;
+        }
+
+        hr { border: 0; border-top: 1px solid #ddd; margin: 20px 0; }
+    </style>
+</head>
+<body id="home">
+
+<header>
+    <img src="apt-fake.png" alt="Gabriele Logo">
+    <h1>GabrieleArch Repository</h1>
+</header>
+
+<nav>
+    <a href="#home">News</a>
+    <a href="#download">Packages</a>
+    <a href="#about">About</a>
+    <a href="https://aur.archlinux.org/packages/?K=gabrielearchapt" target="_blank">AUR Profile</a>
+</nav>
+
+<main>
+    <section>
+        <div class="box">
+            <div class="box-title">Latest Updates</div>
+            <div class="box-content">
+                <strong>[2026-05-08] Suite Update v1.8-1</strong>
+                <p>Oggi abbiamo rilasciato l'aggiornamento massivo della suite. Tutti i pacchetti sono stati ottimizzati per garantire stabilità e nuove funzioni professionali.</p>
+                <ul>
+                    <li><strong>apt-fake-ubuntu:</strong> Introdotta la gestione della cronologia (history).</li>
+                    <li><strong>g-helper:</strong> Nuovo sistema di pulizia automatica dei file build.</li>
+                    <li><strong>ntpclient:</strong> Aggiunto rilevamento dell'offset di precisione.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="download" class="box">
+            <div class="box-title">Software Packages</div>
+            <div class="box-content">
+                
+                <h3>apt-fake-ubuntu <span class="version-tag">1.8-1</span></h3>
+                <p>Ubuntu-style APT wrapper for Arch Linux. Now includes history logging and Zenity GUI.</p>
+                <code>yay -S apt-fake-ubuntu</code>
+                <a href="https://aur.archlinux.org/packages/apt-fake-ubuntu" class="download-btn">AUR Page</a>
+
+                <hr>
+
+                <h3>g-helper <span class="version-tag">1.3-1</span></h3>
+                <p>Lightweight AUR assistant with auto-cleanup and shallow cloning for speed.</p>
+                <code>yay -S g-helper</code>
+                <a href="https://aur.archlinux.org/packages/g-helper" class="download-btn">AUR Page</a>
+
+                <hr>
+
+                <h3>ntpclient <span class="version-tag">2026.05-8</span></h3>
+                <p>Precision time sync utility with clock drift (offset) detection.</p>
+                <code>yay -S ntpclient-gabriele</code>
+                <a href="https://aur.archlinux.org/packages/ntpclient-gabriele" class="download-btn">AUR Page</a>
+
+                <hr>
+
+                <h3>xfce-datetime-plugin <span class="version-tag">0.8.3-3</span></h3>
+                <p>Custom XFCE panel plugin for date and time, optimized by Gabriele.</p>
+                <code>yay -S xfce4-datetime-plugin</code>
+                <a href="https://aur.archlinux.org/packages/xfce4-datetime-plugin" class="download-btn">AUR Page</a>
+
+            </div>
+        </div>
+
+        <div id="about" class="box">
+            <div class="box-title">About This Project</div>
+            <div class="box-content">
+                <p>Benvenuti nel mio ecosistema Arch. Mi chiamo <strong>Gabriele</strong> (gabrielearchapt) e sviluppo strumenti per rendere Arch Linux più amichevole per chi viene da sistemi Debian/Ubuntu, senza sacrificare la velocità.</p>
+                <p>I miei tool sono progettati per essere:</p>
+                <ul>
+                    <li>Leggeri (scritti in Bash pulito)</li>
+                    <li>Indipendenti (funzionano offline dopo il download)</li>
+                    <li>In Inglese (per la community globale)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <aside>
+        <div class="box">
+            <div class="box-title">Maintenance Stats</div>
+            <div class="box-content">
+                <ul class="stats-list">
+                    <li>Maintainer: <strong>gabrielearchapt</strong></li>
+                    <li>Total Packages: <strong>4</strong></li>
+                    <li>Build Logic: <strong>v1.8 Stable</strong></li>
+                    <li>Status: <span style="color: green; font-weight: bold;">● Online</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="box" style="border: 1px solid var(--arch-blue);">
+            <div class="box-title" style="background-color: var(--arch-dark);">Quick Links</div>
+            <div class="box-content">
+                <p><a href="https://wiki.archlinux.org" style="color: var(--arch-blue);">Arch Wiki</a></p>
+                <p><a href="https://aur.archlinux.org" style="color: var(--arch-blue);">AUR Home</a></p>
+            </div>
+        </div>
+    </aside>
+</main>
+
+<footer>
+    © 2026 Gabriele's Tools | Powered by Arch Linux | Art by Gabriele
+</footer>
+
+</body>
+</html>
+"""
+
+# Scriviamo il file index.html
+with open("index.html", "w") as f:
+    f.write(html_content)
+
+print("Sito aggiornato con successo!")
