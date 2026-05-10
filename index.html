@@ -21,22 +21,18 @@
             scroll-behavior: smooth;
         }
 
-        /* Top Header */
         header {
             background-color: var(--arch-dark);
             border-bottom: 5px solid var(--arch-blue);
             padding: 20px 10%;
             display: flex;
             align-items: center;
-            justify-content: space-between;
         }
 
-        .header-left { display: flex; align-items: center; }
         header img { height: 60px; margin-right: 20px; border-radius: 4px; }
         header h1 { color: white; margin: 0; font-size: 1.8em; letter-spacing: 1px; }
         .version-main { color: var(--arch-blue); font-size: 0.6em; margin-left: 10px; border: 1px solid var(--arch-blue); padding: 2px 8px; }
 
-        /* Navbar */
         nav {
             background-color: var(--arch-light);
             padding: 12px 10%;
@@ -57,7 +53,6 @@
 
         nav a:hover { color: var(--arch-black); }
 
-        /* Layout */
         main {
             padding: 40px 10%;
             display: grid;
@@ -65,17 +60,13 @@
             gap: 40px;
         }
 
-        /* Package Cards */
         .pkg-card {
             border: 1px solid #e1e4e8;
             border-radius: 6px;
             margin-bottom: 30px;
             overflow: hidden;
-            transition: transform 0.2s;
             scroll-margin-top: 80px;
         }
-
-        .pkg-card:hover { border-color: var(--arch-blue); }
 
         .pkg-header {
             background-color: var(--arch-blue);
@@ -98,7 +89,6 @@
             font-size: 0.9em;
         }
 
-        /* Terminal Style Commands */
         code {
             display: block;
             background-color: var(--arch-black);
@@ -108,7 +98,6 @@
             margin: 15px 0;
             font-family: 'Consolas', 'Monaco', monospace;
             font-size: 0.9em;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
         }
 
         .btn-aur {
@@ -119,24 +108,16 @@
             text-decoration: none;
             border-radius: 4px;
             font-size: 0.85em;
-            transition: 0.3s;
         }
 
         .btn-aur:hover { background-color: var(--arch-blue); }
 
-        /* Sidebar */
         aside .box {
             background: var(--arch-light);
             border: 1px solid #ddd;
             padding: 20px;
             border-radius: 6px;
             margin-bottom: 30px;
-        }
-
-        .dev-tag {
-            color: var(--arch-blue);
-            font-weight: bold;
-            border-bottom: 2px solid var(--arch-blue);
         }
 
         footer {
@@ -146,102 +127,87 @@
             color: #888;
             font-size: 0.85em;
         }
-
-        @media (max-width: 768px) {
-            main { grid-template-columns: 1fr; }
-        }
     </style>
 </head>
 <body id="home">
 
 <header>
-    <div class="header-left">
-        <img src="apt-fake.png" alt="Gabriele Logo">
-        <h1>GabrieleArch <span class="version-main">v2.0-STABLE</span></h1>
-    </div>
+    <img src="apt-fake.png" alt="Gabriele Logo">
+    <h1>GabrieleArch <span class="version-main">v2.0-STABLE</span></h1>
 </header>
 
 <nav>
     <a href="#home">Dashboard</a>
     <a href="#packages">Software</a>
-    <a href="#about">About</a>
     <a href="https://aur.archlinux.org/packages/?K=gabrielearchapt" target="_blank">AUR Profile</a>
 </nav>
 
 <main>
     <section id="packages">
         <h2>Official Maintenance Repository</h2>
-        <p>Tutti i pacchetti sono mantenuti ufficialmente da <strong>gabrielearchapt</strong>.</p>
+        <p>Software suite maintained by <strong>gabrielearchapt</strong>.</p>
 
-        <div class="pkg-card" id="apt">
+        <div class="pkg-card">
             <div class="pkg-header">
                 <span>apt-fake-ubuntu</span>
                 <span class="badge">v2.0-1</span>
             </div>
             <div class="pkg-body">
-                <p>Advanced Ubuntu-style wrapper for Arch Linux. Now features <strong>History Logging</strong>, <strong>Zenity Progress Bars</strong>, and integrated AUR search engine.</p>
+                <p>Ubuntu-style wrapper with History logging and Zenity Progress Bars.</p>
                 <code>yay -S apt-fake-ubuntu</code>
-                <a href="https://aur.archlinux.org/packages/apt-fake-ubuntu" class="btn-aur">View on AUR</a>
+                <a href="https://aur.archlinux.org/packages/apt-fake-ubuntu" class="btn-aur">AUR Page</a>
             </div>
         </div>
 
-        <div class="pkg-card" id="ghelper">
+        <div class="pkg-card">
             <div class="pkg-header">
                 <span>g-helper</span>
                 <span class="badge">v1.4-1</span>
             </div>
             <div class="pkg-body">
-                <p>The "engine" of the suite. Optimized AUR bridge with <strong>Smart Auto-Cleanup</strong> and lightning-fast search capabilities.</p>
+                <p>Optimized AUR bridge with Auto-Cleanup and Smart Search.</p>
                 <code>yay -S g-helper</code>
-                <a href="https://aur.archlinux.org/packages/g-helper" class="btn-aur">View on AUR</a>
+                <a href="https://aur.archlinux.org/packages/g-helper" class="btn-aur">AUR Page</a>
             </div>
         </div>
 
-        <div class="pkg-card" id="ntp">
+        <div class="pkg-card">
             <div class="pkg-header">
-                <span>ntpclient-gabriele</span>
+                <span>ntpclient</span>
                 <span class="badge">2026.05.10</span>
             </div>
             <div class="pkg-body">
-                <p>Precision NTP synchronization utility. Includes <strong>Offset Detection</strong> and system logging to monitor clock drift.</p>
-                <code>yay -S ntpclient-gabriele</code>
-                <a href="https://aur.archlinux.org/packages/ntpclient-gabriele" class="btn-aur">View on AUR</a>
+                <p>Precision NTP synchronization with drift offset detection.</p>
+                <code>yay -S ntpclient</code>
+                <a href="https://aur.archlinux.org/packages/ntpclient" class="btn-aur">AUR Page</a>
             </div>
         </div>
 
-        <div class="pkg-card" id="xfce">
+        <div class="pkg-card">
             <div class="pkg-header">
                 <span>xfce4-datetime-plugin</span>
                 <span class="badge">v0.8.3-4</span>
             </div>
             <div class="pkg-body">
-                <p>Customized panel plugin for XFCE environments. Optimized for performance and stability on the latest Arch kernels.</p>
+                <p>Advanced date/time panel plugin for XFCE desktop environments.</p>
                 <code>yay -S xfce4-datetime-plugin</code>
-                <a href="https://aur.archlinux.org/packages/xfce4-datetime-plugin" class="btn-aur">View on AUR</a>
+                <a href="https://aur.archlinux.org/packages/xfce4-datetime-plugin" class="btn-aur">AUR Page</a>
             </div>
         </div>
     </section>
 
     <aside>
         <div class="box">
-            <h3>Developer Status</h3>
-            <p>Maintainer: <span class="dev-tag">gabrielearchapt</span></p>
-            <p>Ecosystem: <strong>v2.0 Anniversary</strong></p>
-            <p>Update: <strong>May 10, 2026</strong></p>
-            <hr>
-            <p style="font-size: 0.85em; color: #666;">Software designed for English localization and high-performance Arch Linux builds.</p>
-        </div>
-
-        <div class="box" id="about">
-            <h3>Mission</h3>
-            <p>Creare strumenti che uniscano la semplicità di utilizzo dei sistemi basati su APT con la potenza pura e il controllo di Arch Linux.</p>
+            <h3>Dev Info</h3>
+            <p>Maintainer: <strong>gabrielearchapt</strong></p>
+            <p>Status: <span style="color: green;">● All Stable</span></p>
+            <p>Last Sync: May 10, 2026</p>
         </div>
     </aside>
 </main>
 
 <footer>
-    <p>© 2026 GabrieleArch Project | All PKGBUILDs signed by <span style="color:white">gabrielearchapt</span></p>
-    <p>Not affiliated with Arch Linux or XFCE Official Teams.</p>
+    <p>© 2026 GabrieleArch Project | PKGBUILDs by gabrielearchapt</p>
 </footer>
 
 </body>
